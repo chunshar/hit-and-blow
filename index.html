@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ヒット & ブロー</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1><span class="title-icon">🎯</span> ヒット & ブロー</h1>
+      <p class="subtitle">CPUが決めた4桁の数字(0〜9)を当てよう!</p>
+    </header>
+
+    <main class="game-card">
+      <section class="status-bar">
+        <div class="status-item">
+          <span class="status-label">試行回数</span>
+          <span class="status-value" id="attempt-count">0</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">状態</span>
+          <span class="status-value" id="game-state">挑戦中</span>
+        </div>
+        <button id="new-game-btn" class="secondary-btn">新しいゲーム</button>
+      </section>
+
+      <section class="input-section">
+        <form id="guess-form" autocomplete="off">
+          <div class="digit-inputs" id="digit-inputs">
+            <input type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" class="digit-box" data-index="0" />
+            <input type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" class="digit-box" data-index="1" />
+            <input type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" class="digit-box" data-index="2" />
+            <input type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" class="digit-box" data-index="3" />
+          </div>
+          <button type="submit" class="primary-btn" id="submit-btn">回答する</button>
+        </form>
+        <p class="error-message" id="error-message"></p>
+      </section>
+
+      <section class="history-section">
+        <h2>回答履歴</h2>
+        <div class="history-table-wrap">
+          <table class="history-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>予想</th>
+                <th>Hit</th>
+                <th>Blow</th>
+              </tr>
+            </thead>
+            <tbody id="history-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal-overlay" id="win-modal">
+      <div class="modal">
+        <div class="modal-icon">🎉</div>
+        <h2>正解です!</h2>
+        <p id="win-message"></p>
+        <button class="primary-btn" id="play-again-btn">もう一度遊ぶ</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
